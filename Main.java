@@ -1,3 +1,6 @@
+import java.awt.Color;
+
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 public class Main {
@@ -16,6 +19,12 @@ public class Main {
         window.setResizable(false);
 
         window.setVisible(true);
-    }
+
+        ImageIcon oP_ImageIcon = new ImageIcon("image/Crountch-One-Piece-Jolly-Roger-Luffys-flag.ico");
+
+        window.setIconImage(oP_ImageIcon.getImage());
+
+        window.getContentPane().setBackground(new Color(8, 143, 143));
+    } 
 
 }

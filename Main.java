@@ -6,19 +6,22 @@ public class Main {
     
     public static void main(String[] args) {
 
-        JLabel number_1_label = new JLabel();
-        number_1_label.setText("Racer Number 1");//text for racer 1
-        number_1_label.setHorizontalAlignment(JLabel.LEFT);//alignment is Upward to the left
-        number_1_label.setVerticalAlignment(JLabel.TOP);
+        JLabel name = new JLabel();
+        JTextField name_input = new JTextField();
+        name.setText("Racer Number 1");//text for racer 1
+        name.setHorizontalAlignment(JLabel.LEFT);//alignment is Upward to the left
+        name.setVerticalAlignment(JLabel.TOP);
 
-        JLabel number_2_label = new JLabel();
-        number_2_label.setText("Racer Number 2");//text for racer 2
-        number_2_label.setHorizontalAlignment(JLabel.LEFT);//alignment is to the left
+        JLabel tyre = new JLabel();
+        JTextField tyre_input = new JTextField();
+        tyre.setText("Racer Number 2");//text for racer 2
+        tyre.setHorizontalAlignment(JLabel.LEFT);//alignment is to the left
 
-        JLabel number_3_label = new JLabel();
-        number_3_label.setText("Racer Number 3");//text for racer 3
-        number_3_label.setHorizontalAlignment(JLabel.LEFT);//alignment is downward to the left
-        number_3_label.setVerticalAlignment(JLabel.BOTTOM);
+        JLabel lap_time = new JLabel();
+        JTextField lap_time_input = new JTextField();
+        lap_time.setText("Racer Number 3");//text for racer 3
+        lap_time.setHorizontalAlignment(JLabel.LEFT);//alignment is downward to the left
+        lap_time.setVerticalAlignment(JLabel.BOTTOM);
 
 
         //Creating JFrame

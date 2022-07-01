@@ -12,8 +12,6 @@ public class Main {
 
         window.setTitle("Race Timing System");
         
-        window.setDefaultCloseOperation(window.EXIT_ON_CLOSE);
-
         window.setSize(600, 600);
 
         window.setResizable(false);

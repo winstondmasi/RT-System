@@ -1,10 +1,15 @@
 import java.awt.Color;
-
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Main {
+public class Main implements ActionListener {
     
     public static void main(String[] args) {
+
+        JTextField name_input = new JTextField();
+        JTextField tyre_input = new JTextField();
+        JTextField lap_time_input = new JTextField();
 
         JLabel name = new JLabel();
         name.setText("Racer Number 1");//text for racer 1
@@ -19,10 +24,6 @@ public class Main {
         lap_time.setText("Racer Number 3");//text for racer 3
         lap_time.setHorizontalAlignment(JLabel.LEFT);//alignment is downward to the left
         lap_time.setVerticalAlignment(JLabel.BOTTOM);
-
-        JTextField name_input = new JTextField();
-        JTextField tyre_input = new JTextField();
-        JTextField lap_time_input = new JTextField();
 
         //Creating JFrame
         JFrame window = new JFrame();
@@ -40,6 +41,10 @@ public class Main {
         window.add(tyre_input);
         window.add(lap_time_input);
 
-    } 
+    }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+    }
 }

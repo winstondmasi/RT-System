@@ -1,35 +1,52 @@
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 public class MyFrame extends JFrame implements ActionListener {
 
     MyFrame(){
 
         JLabel name = new JLabel();
-        name.setText("What is the racers name?\r\n");//name of the racer
+        name.setText("Name: \r\n");//name of the racer
         name.setBounds(25,100, 50,50);
 
         JLabel tyre = new JLabel();
-        tyre.setText("What type of tyre did they use?\r\n");//type of tyre
+        tyre.setText("Tyre: \r\n");//type of tyre
         tyre.setBounds(25,250, 50,50);
 
         JLabel lap_time = new JLabel();
-        lap_time.setText("What was the lap time they set (in seconds)?\r\n");//lap time
+        lap_time.setText("Time: \r\n");//lap time
         lap_time.setBounds(25,400, 10,50);
 
         JTextField name_input = new JTextField();
-        name_input.setBounds(300, 100, 250, 75);
+        name_input.setBounds(250, 100, 250, 75);
 
         JTextField tyre_input = new JTextField();
-        tyre_input.setBounds(300, 250, 250, 75);
+        tyre_input.setBounds(250, 250, 250, 75);
 
         JTextField lap_time_input = new JTextField();
-        lap_time_input.setBounds(300, 400, 250, 75);
+        lap_time_input.setBounds(250, 400, 250, 75);
+
+
+        ImageIcon imageIcon = new ImageIcon("image/point.png"); // load the image to a imageIcon
+        Image image = imageIcon.getImage(); // transform it 
+        Image newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+        imageIcon = new ImageIcon(newimg);  // transform it back
 
         JButton button = new JButton();
         button.setBounds(200, 550, 300, 50);
+        button.addActionListener(this);
+        button.setText("Submit");
+        button.setIcon(imageIcon);
+        button.setFont(new Font("Ubuntu", Font.PLAIN, 20));
 
         this.setTitle("Race Timing System");
         this.setSize(700, 700);

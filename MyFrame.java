@@ -12,6 +12,12 @@ import javax.swing.JTextField;
 
 public class MyFrame extends JFrame implements ActionListener {
 
+    JButton button;
+
+    JTextField name_input;
+    JTextField tyre_input;
+    JTextField lap_time_input;
+
     MyFrame(){
 
         JLabel name = new JLabel();
@@ -26,13 +32,13 @@ public class MyFrame extends JFrame implements ActionListener {
         lap_time.setText("Time: \r\n");//lap time
         lap_time.setBounds(25,400, 10,50);
 
-        JTextField name_input = new JTextField();
+        name_input = new JTextField();
         name_input.setBounds(250, 100, 250, 75);
 
-        JTextField tyre_input = new JTextField();
+        tyre_input = new JTextField();
         tyre_input.setBounds(250, 250, 250, 75);
 
-        JTextField lap_time_input = new JTextField();
+        lap_time_input = new JTextField();
         lap_time_input.setBounds(250, 400, 250, 75);
 
 
@@ -41,7 +47,7 @@ public class MyFrame extends JFrame implements ActionListener {
         Image newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
         imageIcon = new ImageIcon(newimg);  // transform it back
 
-        JButton button = new JButton();
+        button = new JButton();
         button.setBounds(200, 550, 300, 50);
         button.addActionListener(this);
         button.setText("Submit");
@@ -69,6 +75,10 @@ public class MyFrame extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        if (e.getSource() == button){
+            System.out.println(name_input.getText() 
+            + tyre_input.getText() 
+            + lap_time_input.getText());
+        }
     }
 }

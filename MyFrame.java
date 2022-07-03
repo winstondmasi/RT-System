@@ -73,12 +73,44 @@ public class MyFrame extends JFrame implements ActionListener {
         this.add(button);
     }
 
+    public void clear() {
+        String EMPTY_STRING = "";
+        name_input.setText(EMPTY_STRING);
+        tyre_input.setText(EMPTY_STRING);
+        lap_time_input.setText(EMPTY_STRING);
+    }
+
+    public static boolean containsItemFromArray(JTextField tyre_input2, String[] tyre_used) {
+        // Convert the array of String items as a Stream
+        // For each element of the Stream call inputString.contains(element)
+        // If you have any match returns true, false otherwise
+
+            for(int i =0; i < tyre_used.length; i++){
+                if(tyre_input2.getText().contains(tyre_used[i])){
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == button){
-            System.out.println(name_input.getText() 
-            + tyre_input.getText() 
-            + lap_time_input.getText());
+
+        String[] tyre_used = {"Hard", "Medium", "Soft", "Intermediate", "Wet"};
+
+
+        if (e.getSource() == button)
+        {
+            if(name_input != null && tyre_input != null
+            && lap_time_input != null && containsItemFromArray(tyre_input, tyre_used))
+            {
+                System.out.println(name_input.getText() + " " 
+                + tyre_input.getText() + " " 
+                + lap_time_input.getText() + "s");
+                clear(); 
+            }else{
+                System.out.println("Not a valid.\n(The types of tyres are Hard, Medium, Soft, Intermediate and Wet) ");
+            }
         }
     }
 }

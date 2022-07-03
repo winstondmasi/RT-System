@@ -10,7 +10,7 @@ time set by every driver and orders them from fastest to slowest.
 This should be updated automatically, every time a new time is
 set.
 
-1.a window with 3 fields and a button. The fields will be for the name, tyre and lap time. The button will be to submit the information entered in the fields. When the submit button is pressed, the information in the fields should be printed to the console/terminal.
+1.a window with 3 fields and a button. The fields will be for the name, tyre and lap time. The button will be to submit the information entered in the fields. When the submit button is pressed, the information in the fields should be printed to the console.
 
 2.a table with the same headings as the fields in the first task. the your submit button will add the entries in the field to the table you just created.
 

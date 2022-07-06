@@ -5,6 +5,8 @@ public class Main{
         //Creating JFrame
         MyFrame frame = new MyFrame();
 
+        LaunchPage Launchpage = new LaunchPage();
+
     }
 
 }

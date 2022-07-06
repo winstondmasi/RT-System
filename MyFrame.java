@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 public class MyFrame extends JFrame implements ActionListener {
 
@@ -17,6 +18,14 @@ public class MyFrame extends JFrame implements ActionListener {
     JTextField name_input;
     JTextField tyre_input;
     JTextField lap_time_input;
+
+    Object data[][] = {
+        {"0"},
+        {"1"},
+        {"2"}
+    };
+
+    String columns[] = {"NAME","TYRE USED","TIME"};
 
     MyFrame(){
 
@@ -40,7 +49,6 @@ public class MyFrame extends JFrame implements ActionListener {
 
         lap_time_input = new JTextField();
         lap_time_input.setBounds(250, 400, 250, 75);
-
 
         ImageIcon imageIcon = new ImageIcon("image/point.png"); // load the image to a imageIcon
         Image image = imageIcon.getImage(); // transform it 
@@ -98,9 +106,13 @@ public class MyFrame extends JFrame implements ActionListener {
 
         String[] tyre_used = {"Hard", "Medium", "Soft", "Intermediate", "Wet"};
 
+        DefaultTableModel tableModel = new DefaultTableModel(data, columns);
 
-        if (e.getSource() == button)
-        {
+        String ROW_ID = Integer.toString(tableModel.getRowCount());
+
+        //button to print info to the console
+        if (e.getSource() == button){
+
             if(name_input != null && tyre_input != null
             && lap_time_input != null && containsItemFromArray(tyre_input, tyre_used))
             {
@@ -111,6 +123,14 @@ public class MyFrame extends JFrame implements ActionListener {
             }else{
                 System.out.println("Not a valid.\n(The types of tyres are Hard, Medium, Soft, Intermediate and Wet) ");
             }
+
+            tableModel.addRow(new Object[]{
+                ROW_ID,
+                name_input,
+                tyre_used,
+                lap_time_input
+            });
         }
+
     }
 }

@@ -30,16 +30,16 @@ public class MyFrame extends JFrame implements ActionListener {
     MyFrame(){
 
         JLabel name = new JLabel();
-        name.setText("Name: \r\n");//name of the racer
+        name.setText("Name:\r\n");//name of the racer
         name.setBounds(25,100, 50,50);
 
         JLabel tyre = new JLabel();
-        tyre.setText("Tyre: \r\n");//type of tyre
+        tyre.setText("Tyre:\n");//type of tyre
         tyre.setBounds(25,250, 50,50);
 
         JLabel lap_time = new JLabel();
-        lap_time.setText("Time: \r\n");//lap time
-        lap_time.setBounds(25,400, 10,50);
+        lap_time.setText("Time:");//lap time
+        lap_time.setBounds(25,400,50,50);
 
         name_input = new JTextField();
         name_input.setBounds(250, 100, 250, 75);
@@ -63,7 +63,7 @@ public class MyFrame extends JFrame implements ActionListener {
         button.setFont(new Font("Ubuntu", Font.PLAIN, 20));
 
         this.setTitle("Race Timing System");
-        this.setSize(700, 700);
+        this.setSize(600, 700);
         this.setResizable(false);
         this.setVisible(true);
         this.setLayout(null);

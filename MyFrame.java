@@ -8,6 +8,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
@@ -27,19 +29,20 @@ public class MyFrame extends JFrame implements ActionListener {
 
     String columns[] = {"NAME","TYRE USED","TIME"};
 
+
     MyFrame(){
 
         JLabel name = new JLabel();
-        name.setText("Name:\r\n");//name of the racer
-        name.setBounds(25,100, 50,50);
+        name.setText("Name: \r\n");//name of the racer
+        name.setBounds(25,100, 70,50);
 
         JLabel tyre = new JLabel();
-        tyre.setText("Tyre:\n");//type of tyre
-        tyre.setBounds(25,250, 50,50);
+        tyre.setText("Tyre: \r\n");//type of tyre
+        tyre.setBounds(25,250, 70,50);
 
         JLabel lap_time = new JLabel();
-        lap_time.setText("Time:");//lap time
-        lap_time.setBounds(25,400,50,50);
+        lap_time.setText("Time: \r\n");//lap time
+        lap_time.setBounds(25,400, 70,50);
 
         name_input = new JTextField();
         name_input.setBounds(250, 100, 250, 75);
@@ -49,6 +52,7 @@ public class MyFrame extends JFrame implements ActionListener {
 
         lap_time_input = new JTextField();
         lap_time_input.setBounds(250, 400, 250, 75);
+
 
         ImageIcon imageIcon = new ImageIcon("image/point.png"); // load the image to a imageIcon
         Image image = imageIcon.getImage(); // transform it 
@@ -63,7 +67,7 @@ public class MyFrame extends JFrame implements ActionListener {
         button.setFont(new Font("Ubuntu", Font.PLAIN, 20));
 
         this.setTitle("Race Timing System");
-        this.setSize(600, 700);
+        this.setSize(700, 700);
         this.setResizable(false);
         this.setVisible(true);
         this.setLayout(null);
@@ -101,18 +105,35 @@ public class MyFrame extends JFrame implements ActionListener {
         return false;
     }
 
+    //creating the table 2).
+    public void table() {
+        //creating table
+        JFrame tablFrame = new JFrame();
+
+        String[] tableDataHeadings = {"name", "Tyre", "Lap time"};
+
+        String[][] tableData = {{name_input.toString(), tyre_input.toString(), lap_time_input.toString()}};
+
+        JTable jTable = new JTable(tableData,tableDataHeadings);
+
+        jTable.setBounds(30, 40, 230, 280);
+
+        JScrollPane jScrollPane = new JScrollPane(jTable);
+        tablFrame.add(jScrollPane);
+
+        tablFrame.setSize(350, 300);
+
+        tablFrame.setVisible(true);
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
 
         String[] tyre_used = {"Hard", "Medium", "Soft", "Intermediate", "Wet"};
 
-        DefaultTableModel tableModel = new DefaultTableModel(data, columns);
 
-        String ROW_ID = Integer.toString(tableModel.getRowCount());
-
-        //button to print info to the console
-        if (e.getSource() == button){
-
+        if (e.getSource() == button)
+        {
             if(name_input != null && tyre_input != null
             && lap_time_input != null && containsItemFromArray(tyre_input, tyre_used))
             {
@@ -124,6 +145,10 @@ public class MyFrame extends JFrame implements ActionListener {
                 System.out.println("Not a valid.\n(The types of tyres are Hard, Medium, Soft, Intermediate and Wet) ");
             }
 
+            DefaultTableModel tableModel = new DefaultTableModel(data, columns);
+
+            String ROW_ID = Integer.toString(tableModel.getRowCount());
+
             tableModel.addRow(new Object[]{
                 ROW_ID,
                 name_input,
@@ -131,6 +156,5 @@ public class MyFrame extends JFrame implements ActionListener {
                 lap_time_input
             });
         }
-
     }
 }

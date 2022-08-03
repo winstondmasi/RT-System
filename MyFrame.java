@@ -21,14 +21,8 @@ public class MyFrame extends JFrame implements ActionListener {
     JTextField tyre_input;
     JTextField lap_time_input;
 
-    Object data[][] = {
-        {"0"},
-        {"1"},
-        {"2"}
-    };
-
-    String columns[] = {"NAME","TYRE USED","TIME"};
-
+    //local variable for table void method
+    JTable jTable;
 
     MyFrame(){
 
@@ -106,28 +100,38 @@ public class MyFrame extends JFrame implements ActionListener {
     }
 
     //creating the table 2).
-    public void table() {
+    JFrame tablFrame;
+    public void table(){
+
+        //Tables Colomns
+        //model = new DefaultTableModel();
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Name");
+        model.addColumn("Tyre");
+        model.addColumn("Lap TIme");
+        model.addRow(new Object[]{name_input.getText(), tyre_input.getText(), lap_time_input.getText()});
+
         //creating table
-        JFrame tablFrame = new JFrame();
-
-        String[] tableDataHeadings = {"name", "Tyre", "Lap time"};
-
-        String[][] tableData = {{name_input.toString(), tyre_input.toString(), lap_time_input.toString()}};
-
-        JTable jTable = new JTable(tableData,tableDataHeadings);
-
-        jTable.setBounds(30, 40, 230, 280);
-
+        jTable = new JTable (model);
+        jTable.setBounds(100, 100, 350, 350);
         JScrollPane jScrollPane = new JScrollPane(jTable);
-        tablFrame.add(jScrollPane);
+        
 
+        tablFrame = new JFrame();
+        tablFrame.setTitle("Table");
         tablFrame.setSize(350, 300);
-
+        tablFrame.add(jScrollPane);
+        tablFrame.add(jTable);
+        tablFrame.pack();
+        tablFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         tablFrame.setVisible(true);
+        tablFrame.setResizable(true);
+        tablFrame.setLayout(null);
+
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e){
 
         String[] tyre_used = {"Hard", "Medium", "Soft", "Intermediate", "Wet"};
 
@@ -140,21 +144,14 @@ public class MyFrame extends JFrame implements ActionListener {
                 System.out.println(name_input.getText() + " " 
                 + tyre_input.getText() + " " 
                 + lap_time_input.getText() + "s");
+
+                table();
+                
                 clear(); 
             }else{
                 System.out.println("Not a valid.\n(The types of tyres are Hard, Medium, Soft, Intermediate and Wet) ");
             }
-
-            DefaultTableModel tableModel = new DefaultTableModel(data, columns);
-
-            String ROW_ID = Integer.toString(tableModel.getRowCount());
-
-            tableModel.addRow(new Object[]{
-                ROW_ID,
-                name_input,
-                tyre_used,
-                lap_time_input
-            });
+            
         }
     }
 }

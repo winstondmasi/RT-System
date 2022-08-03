@@ -9,7 +9,7 @@ time set by every driver and orders them from fastest to slowest.This should be 
 
 1. A window with 3 fields and a button. The fields will be for the name, tyre and lap time. The button will be to submit the information entered in the fields. When the submit button is pressed, the information in the fields should be printed to the console.
 
-![Alt text](image/Screenshot 2022-07-31 at 21.39.38.png)
+<img width="598" alt="Screenshot 2022-07-31 at 21 39 38" src="https://user-images.githubusercontent.com/30538752/182650326-999bd5f0-5700-41a5-ae25-34cef7911bc7.png">
 
 2. A table with the same headings as the fields in the first task. the your submit button will add the entries in the field to the table you just created.
 

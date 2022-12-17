@@ -1,6 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Scanner;
 
 public class Table {
     // The table data will be stored in a two-dimensional array
@@ -37,6 +42,7 @@ public class Table {
         frame.setSize(400, 200);
         frame.setVisible(true);
     }
+    
 
     // This method adds a new entry to the table
     public static void addEntry(String name, String tyre, String lapTime) {

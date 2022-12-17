@@ -4,6 +4,8 @@ public class Main{
 
         //Creating JFrame
         new MyFrame();
+
+        new Table();
         
     }
 

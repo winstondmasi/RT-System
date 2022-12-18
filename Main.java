@@ -2,9 +2,10 @@ public class Main{
     
     public static void main(String[] args) {
 
-        //Creating JFrame
+        // creating JFrame
         new MyFrame();
 
+        // adding table too
         new Table();
         
     }

@@ -1,11 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Scanner;
 
 public class Table {
     // The table data will be stored in a two-dimensional array

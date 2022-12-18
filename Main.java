@@ -5,7 +5,7 @@ public class Main{
         // creating JFrame
         new MyFrame();
 
-        // adding table too
+        // adding table
         new Table();
         
     }

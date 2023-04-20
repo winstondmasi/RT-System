@@ -1,5 +1,4 @@
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -7,6 +6,8 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 import javax.swing.*;
+import java.awt.*;
+
 
 public class MyFrame extends JFrame {
     // Create a frame

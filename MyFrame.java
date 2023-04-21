@@ -6,7 +6,7 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 import javax.swing.*;
-import java.awt.*;
+import java.awt.event.*;
 
 
 public class MyFrame extends JFrame {
@@ -52,47 +52,35 @@ public class MyFrame extends JFrame {
         // Show the window
         frame.setVisible(true);
 
-        // Add an action listener to the submit button
-        submitButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // When the submit button is pressed, add the values in the fields to the table
-                Table.addEntry(nameField.getText(), tyreField.getText(), lapTimeField.getText());
-                saveLap(nameField.getText(), tyreField.getText(), lapTimeField.getText());
-
-            }
+        submitButton.addActionListener(e -> {
+            // When the submit button is pressed, add the values in the fields to the table
+            Table.addEntry(nameField.getText(), tyreField.getText(), lapTimeField.getText());
+            saveLap(nameField.getText(), tyreField.getText(), lapTimeField.getText());
         });
 
-        // Add an action listener to the clear button
-        clearButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // When the clear button is pressed, clear all the saved lap times
-                clearLapTimes();
-            }
+        clearButton.addActionListener(e -> {
+            // When the clear button is pressed, clear all the saved lap times
+            clearLapTimes();
         });
 
-        // Add an action listener to the delete button
-        deleteButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // When the delete button is pressed, delete the selected lap time
-                deleteLapTime(nameField.getText(), tyreField.getText(), lapTimeField.getText());
-            }
+        deleteButton.addActionListener(e -> {
+            // When the delete button is pressed, delete the selected lap time
+            deleteLapTime(nameField.getText(), tyreField.getText(), lapTimeField.getText());
         });
+
     }
 
     public void saveLap(String name, String tyre, String lapTime) {
         try {
             PrintWriter writer = new PrintWriter(new FileOutputStream("laps.txt", true));
-
             writer.println(name + "," + tyre + "," + lapTime);
-
             writer.close();
         } catch (IOException e) {
-            // handle the exception
+            e.printStackTrace(); // Print stack trace for troubleshooting
+            // Display error message to user or log the exception
         }
     }
+
 
     public void loadLaps() {
         try {

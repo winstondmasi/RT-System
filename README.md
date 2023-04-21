@@ -2,13 +2,41 @@
 
 Race timing system
 
-A race timing system, that tracks every lap time set by a driver, this should include their name, the tyre they used (Hard,Medium, Soft, Intermediate, Wet) and their lap time. Then, create a leaderboard system, that searches for the best
-time set by every driver and orders them from fastest to slowest.This should be updated automatically, every time a new time is set.
+This is a simple Java-based lap time tracker application using Swing for its GUI. The application allows users to add, save, load, clear, and delete lap time entries. The entries are stored in a table and are saved to a text file called "laps.txt" for persistence.
 
-1. A window with 3 fields and a button. The fields will be for the name, tyre and lap time. The button will be to submit the information entered in the fields. When the submit button is pressed, the information in the fields should be printed to the console.
+![Table Application Screenshot](image/screenshot-table.png)
 
-<img width="598" alt="Screenshot 2022-07-31 at 21 39 38" src="https://user-images.githubusercontent.com/30538752/182653036-b70d6e05-5eaa-4d9c-9916-ad179232ae79.png">
+## Features
 
-2. A table with the same headings as the fields in the first task. the your submit button will add the entries in the field to the table you just created.
+- Add lap time entries with Name, Tyre, and Lap Time information.
+- Save lap time entries to a text file (laps.txt) for future use.
+- Load previously saved lap time entries from the laps.txt file.
+- Clear all lap time entries in the table and the laps.txt file.
+- Delete specific lap time entries from the table and the laps.txt file.
 
-3. A second view for the window. should be able to change between the two views with two buttons in the window. On the leaderboard view, there should only be a table. This table will be automatically updated each time a new time is submitted. It will contain the name and best lap time of every name that has submitted a lap.
+## Usage
+
+1. Clone this repository to your local machine.
+2. Compile the `Table.java` file using the following command:
+
+```bash
+javac Table.java
+```
+
+## Application Structure
+
+The application is a single class, Table, which extends the JFrame class from the Swing library. The class is responsible for creating and managing the application window, the table, and the input fields for adding and managing lap time entries.
+
+### Methods
+
+- addEntry(String name, String tyre, String lapTime): Adds a new entry to the table.
+- saveLap(String name, String tyre, String lapTime): Saves a lap entry to the "laps.txt" file.
+- loadLaps(): Loads lap data from the "laps.txt" file and adds it to the table.
+- clearLapTimes(): Clears the "laps.txt" file by overwriting it with an empty string.
+- clearTableData(): Clears all data from the table.
+- deleteLapTime(String name, String tyre, String lapTime): Deletes a lap time from the "laps.txt" file.
+- deleteTableRow(String name, String tyre, String lapTime): Deletes a row from the table based on the provided data.
+
+
+ 
+

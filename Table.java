@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -30,10 +32,33 @@ public class Table extends JFrame {
         frame.setVisible(true);
 
         JPanel panel1 = new JPanel();
-        panel1.setPreferredSize(new Dimension(400, 100));
+        panel1.setPreferredSize(new Dimension(400, 150));
         JTextField nameField = new JTextField("Name", 20);
         JTextField tyreField = new JTextField("Tyre", 20);
         JTextField lapTimeField = new JTextField("Lap Time", 20);
+
+        // Add focus listeners to the text fields
+        nameField.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                nameField.setText("");
+            }
+        });
+
+        tyreField.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                tyreField.setText("");
+            }
+        });
+
+        lapTimeField.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                lapTimeField.setText("");
+            }
+        });
+
         panel1.add(nameField);
         panel1.add(tyreField);
         panel1.add(lapTimeField);
@@ -61,13 +86,14 @@ public class Table extends JFrame {
             Table.addEntry(nameField.getText(), tyreField.getText(), lapTimeField.getText());
             saveLap(nameField.getText(), tyreField.getText(), lapTimeField.getText());
         });
-
         clearButton.addActionListener(e -> {
             clearLapTimes();
+            clearTableData(); // Clear the table data after clearing the file
         });
 
         deleteButton.addActionListener(e -> {
             deleteLapTime(nameField.getText(), tyreField.getText(), lapTimeField.getText());
+            deleteTableRow(nameField.getText(), tyreField.getText(), lapTimeField.getText());
         });
 
     }
@@ -140,6 +166,16 @@ public class Table extends JFrame {
         }
     }
 
+    // Add a method to clear the table data
+    public static void clearTableData() {
+        for (int row = 0; row < data.length; row++) {
+            for (int col = 0; col < data[row].length; col++) {
+                data[row][col] = null;
+            }
+        }
+        table.repaint();
+    }
+
     public void deleteLapTime(String name, String tyre, String lapTime) {
         try {
             // Read the lap data from the file
@@ -164,5 +200,27 @@ public class Table extends JFrame {
         } catch (IOException e) {
             // handle the exception
         }
+    }
+
+    // Add a method to delete a table row based on the given data
+    public static void deleteTableRow(String name, String tyre, String lapTime) {
+        for (int row = 0; row < data.length; row++) {
+            if (data[row][0] != null && data[row][0].equals(name) &&
+                    data[row][1] != null && data[row][1].equals(tyre) &&
+                    data[row][2] != null && data[row][2].equals(lapTime)) {
+                // Shift the remaining rows up by one
+                for (int i = row; i < data.length - 1; i++) {
+                    data[i][0] = data[i + 1][0];
+                    data[i][1] = data[i + 1][1];
+                    data[i][2] = data[i + 1][2];
+                }
+                // Clear the last row
+                data[data.length - 1][0] = null;
+                data[data.length - 1][1] = null;
+                data[data.length - 1][2] = null;
+                break;
+            }
+        }
+        table.repaint();
     }
 }
